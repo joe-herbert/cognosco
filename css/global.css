@@ -1,0 +1,41 @@
+.accordion {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    outline: none;
+    color: #444;
+    background-color: #eee;
+    font-size: 15px;
+    text-align: left;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.accordion.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion:active {
+    transform: scale(0.95);
+}
+
+.accordion:after {
+    content: '\002B';
+    float: right;
+    margin-left: 5px;
+    color: #777;
+    font-weight: bold;
+}
+
+.accordion.active:after {
+    content: "\2212";
+}
+
+.accordian+div {
+    max-height: 0;
+    padding: 0 18px;
+    background-color: white;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
