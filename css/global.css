@@ -1,10 +1,14 @@
+html, body {
+    background-color: #ecf6ff;
+}
+
 .accordion {
     width: 100%;
     padding: 18px;
     border: none;
     outline: none;
-    color: #444;
-    background-color: #eee;
+    color: white;
+    background-color: #448dc9;
     font-size: 15px;
     text-align: left;
     transition: 0.4s;
@@ -13,7 +17,7 @@
 
 .accordion.active,
 .accordion:hover {
-    background-color: #ccc;
+    background-color: #3b79ad;
 }
 
 .accordion:active {
@@ -24,7 +28,7 @@
     content: '\002B';
     float: right;
     margin-left: 5px;
-    color: #777;
+    color: #d0dde8;
     font-weight: bold;
 }
 
@@ -32,10 +36,9 @@
     content: "\2212";
 }
 
-.accordian+div {
+.accordion+div {
     max-height: 0;
     padding: 0 18px;
-    background-color: white;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
