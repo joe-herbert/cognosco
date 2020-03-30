@@ -1,0 +1,36 @@
+{
+  "name": "learn",
+  "version": "1.0.0",
+  "description": "A website where you learn a huge range of things. More content added every day",
+  "main": "index.js",
+  "scripts": {
+    "ts": "tsc",
+    "scss": "sass --no-source-map scss/global.scss build/bundle.css",
+    "minjs": "minify build/bundle.js > build/bundle.min.js",
+    "mincss": "minify build/bundle.css > build/bundle.min.css",
+    "min": "npm run-script minjs && npm run-script mincss",
+    "build": "npm run-script ts && npm run-script scss && npm run-script min",
+    "watch:css": "onchange 'scss/*.scss' -- npm run-script build",
+    "watch:js": "onchange 'ts/*.ts' -- npm run-script build",
+    "watch:html": "onchange '*.html' -- npm run-script build",
+    "watch": "npm-run-all --parallel watch:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joe-herbert/learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joe-herbert/learn/issues"
+  },
+  "homepage": "https://github.com/joe-herbert/learn#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "minify": "^5.1.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^6.1.0",
+    "sass": "^1.26.3",
+    "typescript": "^3.8.3"
+  }
+}

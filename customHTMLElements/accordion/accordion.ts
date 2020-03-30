@@ -1,5 +1,5 @@
-window.onload = function () {
-    //accordion
+import {addLoadEvent} from "../../ts/global";
+addLoadEvent(() => {
     var acc = document.getElementsByClassName("accordion");
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
@@ -12,4 +12,4 @@ window.onload = function () {
             }
         });
     }
-}
+});
