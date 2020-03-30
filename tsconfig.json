@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": false,
+        "outFile": "./build/bundle.js",
+        "sourceMap": false
+    },
+    "include": [
+        "ts/*",
+        "customHTMLElements/*",
+        "customHTMLElements/*/*"
+    ]
+}

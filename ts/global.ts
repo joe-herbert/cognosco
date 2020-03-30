@@ -10,5 +10,4 @@ export function addLoadEvent(func: Function) {
             func();
         }
     }
-    console.log("wow");
 }
