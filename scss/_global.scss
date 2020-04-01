@@ -1,3 +1,45 @@
-html, body {
-    background-color: #ecf6ff;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,700;0,900;1,100;1,400;1,700;1,900&display=swap');
+@font-face {
+    font-family: 'Monthoers';
+    src: url('../fonts/monthoers-webfont.woff2') format('woff2'),
+        url('../fonts/monthoers-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$bc: #fffcf9;
+$bc-header: #5fa7e2;
+$bc-header-hover: #3f88c6;
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: $bc;
+    font-family: 'Raleway', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#header {
+    background-color: $bc-header;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+        transition: color 0.4s, background-color 0.4s;
+
+        &:hover {
+            color: white;
+            background-color: $bc-header-hover;
+        }
+    }
+}
+
+.main {
+    margin: 3vw;
 }
