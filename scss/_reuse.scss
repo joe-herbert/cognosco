@@ -1,0 +1,24 @@
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+ul.hyphen {
+    list-style-type: none;
+
+    > li {
+        text-indent: -5px;
+
+        &:before {
+            content: "\2014 ";
+            text-indent: -5px;
+        }
+    }
+}
