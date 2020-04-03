@@ -7,7 +7,7 @@
 A website where you learn a huge range of things. More content added every day
 
 
-## Using custom elements
+### Using custom elements
 - accordion
 ```
 <button class="el-accordion">Title</button>
