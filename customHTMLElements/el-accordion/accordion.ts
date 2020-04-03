@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-    let acc = document.getElementsByClassName("accordion");
+    let acc = document.getElementsByClassName("el-accordion");
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
             this.classList.toggle("active");
