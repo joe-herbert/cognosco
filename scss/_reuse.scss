@@ -22,3 +22,23 @@ ul.hyphen {
         }
     }
 }
+
+.noselect {
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.hide {
+    display: none;
+}
+
+.transition {
+    transition: opacity 0.5s, visibility 0.5s;
+    opacity: 1;
+    visibility: visible;
+
+    &.hideTransition {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

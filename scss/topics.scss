@@ -1,0 +1,12 @@
+@use "globalVars"as *;
+@use "../customHTMLElements/el-a/a";
+
+#header .topics::after {
+    @include headerActive;
+}
+
+body.topics {
+    .main {
+        padding: 40px 60px;
+    }
+}
