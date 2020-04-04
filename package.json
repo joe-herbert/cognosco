@@ -4,20 +4,18 @@
   "description": "A website where you learn a huge range of things. More content added every day",
   "main": "index.js",
   "scripts": {
-    "ts": "tsc",
-    "scss": "sass --no-source-map scss:build/css",
-    "cssprefix": "postcss build/css/bundle.css --use autoprefixer -o build/css/bundle.css --no-map",
-    "min:js": "minify build/js/bundle.js > build/js/bundle.min.js",
-    "min:css": "minify build/css/bundle.css > build/css/bundle.min.css",
-    "min": "npm run-script min:js && npm run-script min:css",
+    "ts": "tsc && tsc --project tsconfig.pages.json",
+    "scss": "sass --no-source-map --style=compressed scss:build/css",
+    "cssprefix": "postcss build/css/*.css --use autoprefixer --dir build/css/ --no-map",
+    "minJS": "run-for-every-file --src \"./build/\" --file \"**/*.js\" --not-file \"**/*.min.js\" --not-file \"**/*/\" --run \"minify build/js/{{file-name}}.js > build/js/{{file-name}}.min.js\"",
     "copy:html": "copyfiles -e node_modules/**/*.html -e build/**/* **/*.html build",
     "copy:htaccess": "copyfiles -a -e node_modules/**/.htaccess -e build/**/* **/.htaccess build",
     "copy:img": "copyfiles -a -e node_modules/**/.htaccess -e build/**/* img/* build",
     "copy:fonts": "copyfiles -a -e node_modules/**/.htaccess -e build/**/* fonts/* build",
     "copy": "npm run-script copy:html && npm run-script copy:htaccess && npm run-script copy:img && npm run-script copy:fonts",
-    "htmlincludes": "html-includes --src ./ --dest build/ --minify && rimraf build/node_modules && rimraf build/build",
-    "build:keep": "npm run-script ts && npm run-script scss && npm run-script cssprefix && npm run-script min && npm run-script copy:htaccess && npm run-script copy:img && npm run-script copy:fonts && npm run-script htmlincludes",
-    "build": "npm run-script build:keep && rimraf build/js/bundle.js && rimraf build/css/bundle.css",
+    "htmlincludes": "html-includes --src ./ --dest build/ --minify && del-cli build/node_modules && del-cli build/build",
+    "build:keep": "npm run-script ts && npm run-script scss && npm run-script cssprefix && npm run-script minJS && npm run-script copy:htaccess && npm run-script copy:img && npm run-script copy:fonts && npm run-script htmlincludes",
+    "build": "npm run-script build:keep && del-cli \". / build / js /*.js\" \"!./build/js/*.min.js\"",
     "serve": "npm run-script build && open-cli build/index.html",
     "build:dev": "npm run-script ts && npm run-script scss && npm run-script htmlincludes",
     "serve:dev": "npm run-script build:dev && open-cli build/index.html",
@@ -37,7 +35,9 @@
     "url": "https://github.com/joe-herbert/learn/issues"
   },
   "homepage": "https://github.com/joe-herbert/learn#readme",
-  "dependencies": {},
+  "dependencies": {
+    "del-cli": "^3.0.0"
+  },
   "devDependencies": {
     "autoprefixer": "^9.7.5",
     "copyfiles": "^2.2.0",
@@ -48,6 +48,7 @@
     "open-cli": "^6.0.1",
     "postcss-cli": "^7.1.0",
     "rimraf": "^3.0.2",
+    "run-for-every-file": "^1.1.0",
     "sass": "^1.26.3",
     "typescript": "^3.8.3"
   }

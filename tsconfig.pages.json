@@ -4,13 +4,14 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": false,
-        "outFile": "./build/js/bundle.js",
+        "outDir": "./build/js/",
         "sourceMap": false,
         "target": "ES6"
     },
     "include": [
+        "ts/*.ts",
+    ],
+    "exclude": [
         "ts/global.ts",
-        "customHTMLElements/*",
-        "customHTMLElements/*/*"
     ]
 }

@@ -70,6 +70,7 @@ body.index {
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 2px;
+            display: block;
 
             &:hover {
                 background-color: $blue-dark;
@@ -77,6 +78,10 @@ body.index {
 
             &:active {
                 transform: scale(0.95);
+            }
+
+            @media screen and (max-width: 700px) {
+                margin: 30px auto 0 auto;
             }
         }
     }
