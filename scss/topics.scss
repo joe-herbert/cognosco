@@ -1,5 +1,6 @@
 @use "globalVars"as *;
-@use "../customHTMLElements/el-a/a";
+@use "../customHTMLElements/el-full-width-a/full-width-a";
+@use "../customHTMLElements/el-accordion/accordion";
 
 #header .topics::after {
     @include headerActive;
@@ -8,5 +9,9 @@
 body.topics {
     .main {
         padding: 40px 60px;
+    }
+
+    .nestedTopicsWrapper {
+        padding: 10px 0 20px 0;
     }
 }

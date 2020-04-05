@@ -1,5 +1,4 @@
-$bc-accordion: #448dc9;
-$bc-accordion-hover-active: #3b79ad;
+@use "../../scss/globalVars"as *;
 
 .el-accordion {
     width: 100%;
@@ -7,14 +6,14 @@ $bc-accordion-hover-active: #3b79ad;
     border: none;
     outline: none;
     color: white;
-    background-color: $bc-accordion;
+    background-color: $bc-topic;
     font-size: 15px;
     text-align: left;
     transition: 0.4s;
     cursor: pointer;
 
     &:hover {
-        background-color: $bc-accordion-hover-active;
+        background-color: $bc-topic-hover-active;
     }
 
     &:active {
@@ -31,16 +30,21 @@ $bc-accordion-hover-active: #3b79ad;
 
     +div {
         max-height: 0;
-        padding: 0 18px;
+        padding: 0 10px;
         overflow: hidden;
         transition: max-height 0.2s ease-out;
+        background-color: rgba(#5ea0d7, .6);
     }
 
     &.active {
-        background-color: $bc-accordion-hover-active;
+        background-color: $bc-topic-hover-active;
 
         :after {
             content: "\2212";
+        }
+
+        +div {
+            padding-top: 10px;
         }
     }
 }
