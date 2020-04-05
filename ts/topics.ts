@@ -24,7 +24,9 @@ function generateTopics(topicParam:any, currentDir:string): string {
             addClass(link, "el-full-width-a");
             link.innerText = topicName;
             if (topic === true) {
-                link.href = (currentDir + topicName).toLowerCase();
+                link.href = (currentDir + topicName).replace(/\s/g, '-').toLowerCase();
+            } else {
+                link.href = topic;
             }
             wrapper.appendChild(link);
         }
