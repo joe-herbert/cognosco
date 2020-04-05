@@ -7,19 +7,19 @@ function addAccordionEventListeners() {
     for (var i = 0; i < acc.length; i++) {
         let accThis: HTMLButtonElement = < HTMLButtonElement > acc[i];
         accThis.addEventListener("click", () => {
+            accThis.classList.toggle("active");
             let panel: HTMLElement = < HTMLElement > accThis.nextElementSibling;
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
             } else {
                 resizeAccordionDiv( < HTMLDivElement > accThis.nextElementSibling);
             }
-            accThis.classList.toggle("active");
         });
     }
 }
 
 function resizeAccordionDiv(accordionDiv: HTMLDivElement) {
-    let totalScrollHeight = getAccordionDivScrollHeight(accordionDiv) + getAccordionDivChildrenHeight(accordionDiv);
+    let totalScrollHeight = getAccordionDivScrollHeight(accordionDiv);
     accordionDiv.style.maxHeight = totalScrollHeight + "px";
     let parent: HTMLElement = accordionDiv;
     let brk: boolean = false;
@@ -32,18 +32,11 @@ function resizeAccordionDiv(accordionDiv: HTMLDivElement) {
     }
 }
 
-function getAccordionDivChildrenHeight(accordionDiv: HTMLDivElement): number {
-    let height = 0;
-    [].forEach.call(accordionDiv.querySelectorAll(":scope > .nestedTopicsWrapper > .el-accordion"), (acc: HTMLButtonElement) => {
-        let accDiv = < HTMLDivElement > acc.nextElementSibling;
-        if (!hasClass(acc, "active")) {
-            height += getAccordionDivScrollHeight(accDiv);
-        }
-        getAccordionDivChildrenHeight(accDiv);
-    })
-    return height;
-}
-
 function getAccordionDivScrollHeight(accordionDiv: HTMLDivElement): number {
-    return accordionDiv.scrollHeight + parseInt(getComputedStyle(accordionDiv).paddingTop);
+    let clone: HTMLDivElement = <HTMLDivElement>accordionDiv.cloneNode(true);
+    addClass(clone, "forTesting");
+    document.getElementsByTagName("body")[0].appendChild(clone);
+    let height:number = clone.scrollHeight + parseInt(getComputedStyle(clone).paddingTop);
+    document.getElementsByTagName("body")[0].removeChild(clone);
+    return height;
 }
