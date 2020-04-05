@@ -65,7 +65,14 @@ let topicsObject: object = {
             "Under the bonnet": {
                 "def": "The maze of pipes and things under the bonnet are all described here, from engines to washer fluid.",
                 "topics": {
-                    "Engine": true
+                    "Engine": true,
+                    "Other things": {
+                        "def": "Other stuff",
+                        "topics": {
+                            "thing": true,
+                            "thing2": true
+                        }
+                    }
                 }
             },
             "Driving": true
