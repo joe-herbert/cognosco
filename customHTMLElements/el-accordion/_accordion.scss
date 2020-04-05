@@ -48,3 +48,9 @@
         }
     }
 }
+
+div.forTesting {
+    opacity: 0;
+    visibility: hidden;
+    transition: none;
+}

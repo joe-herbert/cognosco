@@ -37,7 +37,7 @@ ul.hyphen {
     opacity: 1;
     visibility: visible;
 
-    &.hideTransition {
+    &.transitionHide {
         opacity: 0;
         visibility: hidden;
     }
