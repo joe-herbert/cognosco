@@ -11,6 +11,7 @@
     text-align: left;
     transition: 0.4s;
     cursor: pointer;
+    border-radius: 0;
 
     &:hover {
         background-color: $bc-topic-hover-active;

@@ -2,6 +2,12 @@ window.addEventListener("load", () => {
     addAccordionEventListeners();
 });
 
+window.addEventListener("resize", () => {
+    [].forEach.call(document.querySelectorAll(".el-accordion.active+div"), (div: HTMLDivElement) => {
+        div.style.maxHeight = getAccordionDivScrollHeight(div) + "px";
+    });
+});
+
 function addAccordionEventListeners() {
     let acc = document.getElementsByClassName("el-accordion");
     for (var i = 0; i < acc.length; i++) {
@@ -33,10 +39,14 @@ function resizeAccordionDiv(accordionDiv: HTMLDivElement) {
 }
 
 function getAccordionDivScrollHeight(accordionDiv: HTMLDivElement): number {
-    let clone: HTMLDivElement = <HTMLDivElement>accordionDiv.cloneNode(true);
-    addClass(clone, "forTesting");
-    document.getElementsByTagName("body")[0].appendChild(clone);
-    let height:number = clone.scrollHeight + parseInt(getComputedStyle(clone).paddingTop);
-    document.getElementsByTagName("body")[0].removeChild(clone);
+    let clone: HTMLDivElement = < HTMLDivElement > accordionDiv.cloneNode(true);
+    let wrapper: HTMLDivElement = document.createElement("div");
+    addClass(wrapper, "forTesting");
+    wrapper.style.padding = "0 10px";
+    wrapper.style.width = getComputedStyle(accordionDiv).width;
+    wrapper.appendChild(clone);
+    document.getElementsByTagName("body")[0].appendChild(wrapper);
+    let height: number = clone.scrollHeight + parseInt(getComputedStyle(clone).paddingTop);
+    document.getElementsByTagName("body")[0].removeChild(wrapper);
     return height;
 }
