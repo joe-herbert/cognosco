@@ -1,0 +1,6 @@
+@use "globalVars" as *;
+
+.main {
+    margin: calc(3vw + #{$nav-height}) 3vw;
+    padding: 0;
+}

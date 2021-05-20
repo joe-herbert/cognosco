@@ -1,0 +1,8 @@
+.el-list-bullet {
+    text-indent: -5px;
+
+    &:before {
+        content: "\2022 ";
+        text-indent: -5px;
+    }
+}

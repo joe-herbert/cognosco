@@ -1,0 +1,20 @@
+@use "../../globalVars"as *;
+
+.el-full-width-a {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    color: white;
+    background-color: $bc-topic;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background-color 0.4s, transform 0.4s;
+
+    &:hover {
+        background-color: $bc-topic-hover-active;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}

@@ -1,0 +1,16 @@
+doctype html
+html(lang='en')
+    include common/head.pug
+    +head(error.status + " error", ["error"])
+    body
+        header
+            include common/navbar.pug
+            +navbar("", user)
+            .main.text-center
+                h1 Uh oh...
+                p Whoops, looks like that's broken. Sorry about that, we'll try and fix it soon.
+                button(onclick="window.history.back();").el.inline-block Go back
+                button(onclick="window.location = './topics'").el.inline-block Choose a topic to learn
+                if (error.stack)
+                    p= error.status + ": " + error.message
+                    pre(style="overflow:scroll") #{error.stack}

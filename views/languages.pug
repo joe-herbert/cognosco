@@ -1,0 +1,53 @@
+doctype html
+html(lang='en')
+    include common/head.pug
+    block includeHead
+        +head(title, ["topics", "form"])
+    body.languages
+        include common/navbar.pug
+        +navbar("topics", user)
+        .main
+            h1 Languages
+            if languages
+                #topicsWrapper
+                    for language in languages
+                        if language.title
+                            a(href=language.directory + language.titleUrl, draggable="false").el-full-width-a= language.title
+                        else
+                            a(href=language.directory + language.titleUrl, draggable="false").el-full-width-a= language.dbName
+            if (user && user.isAdmin)
+                h2.text-center Create a New Language
+                p.text-center Note to admin: A model and migration both need to be created manually before submitting this form.
+                form(action='/newLanguage', method='POST').limitWidth
+                    if pathName
+                        input(name="pathName", type="text", value=pathName).hide
+                    label DB/Model Name:
+                    input(type="text", name="dbName", value=formData.dbName, required)
+                    if (errors && errors.dbName)
+                        p.error #{errors.dbName}
+                    label Title:
+                    input(type="text", name="title", value=formData.title)
+                    if (errors && errors.title)
+                        p.error #{errors.title}
+                    label Base Language Column:
+                    input(type="text", name="baseColumn", value=formData.baseColumn, required)
+                    if (errors && errors.baseColumn)
+                        p.error #{errors.baseColumn}
+                    label Primary Language Column:
+                    input(type="text", name="primaryColumn", value=formData.primaryColumn, required)
+                    if (errors && errors.primaryColumn)
+                        p.error #{errors.primaryColumn}
+                    label Secondary Language Column:
+                    input(type="text", name="secondaryColumn", value=formData.secondaryColumn)
+                    if (errors && errors.secondaryColumn)
+                        p.error #{errors.secondaryColumn}
+                    label Voice:
+                    input(type="text", name="voice", value=formData.voice)
+                    if (errors && errors.voice)
+                        p.error #{errors.voice}
+                    if (errors && errors.general)
+                        p.error #{errors.general}
+                    button.el Create Language
+        include common/footer.pug
+        +footer()
+        block jsLinks

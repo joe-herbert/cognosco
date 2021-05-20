@@ -1,0 +1,38 @@
+doctype html
+html(lang='en')
+    include common/head.pug
+    +head(title, ["contribute"])
+    body.contribute
+        include common/navbar.pug
+        +navbar("contribute", user)
+        .main
+            h1.text-center Contribute
+            p At cognosco, we believe that every individual has knowledge to share with the world. That's why anyone can submit an edit to any of our pages, or request a new page to be created.
+            h3 The Edit Process
+            ul.step
+                li 
+                    span #[a(href='/login').el Log in] or #[a(href='/signup').el sign up]
+                li If you haven't already, verify your email
+                li Go to the page you'd like to edit and click "Edit"
+                li Make your changes
+                li Click "Submit for Approval"
+                li Done!
+            h3 To request a new page
+            ul.step
+                li Go to #[a(href='/account').el your account]
+                li Click "My Changes"
+                li Click "Request New Page"
+                li Enter the page title and select a location
+                li Click "Submit"
+                li Done!
+            h3 Things to remember when contributing
+            p You'll be notified by email and/or in your account when your changes are approved. You can change how you're contacted in your account.
+            p We'll try to approve your changes ASAP, but we are a small team so please be patient. We won't miss you out!
+            p Your changes will be fact checked. Please only submit changes which are factually accurate and can be proved.
+            p To maintain the aesthetics of the site, you should use #[a(href='/customElements').el cognosco's custom elements] when editing.
+            p If you submit rude or inappropriate content you will receive a warning. If you do so again, you will receive a temporary ban from editing. If you do so a third time, the ban will be permanent. Any permanent bans can be appealed by emailing #[a(href="mailto:admin@cognosco.info").el admin@cognosco.info].
+            .text-center
+                h2 Top Contributors
+                span The following people have contributed more to this site than anyone else. Start contributing to get your name shown!
+        include common/footer.pug
+        +footer()

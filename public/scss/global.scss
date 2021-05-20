@@ -1,0 +1,135 @@
+@use "globalVars" as *;
+@use "reuse";
+@use "custom-elements";
+@use "keyframes";
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700|Source+Sans+Pro:300,400,400i,700,900&display=swap');
+
+@font-face {
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Monthoers';
+    src: url('../fonts/monthoers-webfont.woff2') format('woff2'),
+        url('../fonts/monthoers-webfont.woff') format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: $bc-body;
+    font: 300 18px "Source Sans Pro", Arial, "SimSun", "宋体", STXihei, "华文细黑", sans-serif;
+    overflow-x: hidden;
+}
+
+#navbar {
+    width: 100%;
+    height: $nav-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $blue;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    z-index: 100;
+
+    .active::after {
+        width: 80%;
+    }
+
+    #logo {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+
+        @media screen and (max-width: 600px) {
+            display: none;
+        }
+    }
+
+    .nav-right {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+
+        img {
+            height: 90%;
+            margin-top: 5%;
+            margin-right: $nav-height / 20;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &:hover {
+                animation: vibrate 1s;
+            }
+        }
+    }
+
+    a {
+        height: $nav-height;
+        padding: 0 10px;
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        line-height: $nav-height;
+
+        &::after {
+            $bottom-height: 3px;
+            height: $bottom-height;
+            position: relative;
+            bottom: $bottom-height + .5px;
+            left: 50%;
+            background-color: $blue-darker;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        #contributeNav {
+            display: none;
+        }
+    }
+}
+
+.main {
+    margin: 3vw;
+    padding: 40px 60px;
+
+    h1 {
+        font-size: 64px;
+        cursor: default;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding: 40px 10px;
+
+        h1 {
+            font-size: 48px;
+        }
+    }
+}
+
+.jhFooter {
+    position: fixed;
+    right: 20px;
+    bottom: 10px;
+    color: $blue;
+    font-weight: bold;
+    font-size: 35px;
+    font-family: 'Monthoers', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+}

@@ -1,0 +1,16 @@
+@use "globalVars" as *;
+
+.nestedTopicsWrapper {
+    padding: 10px 0 20px 0;
+}
+
+#topicsWrapper,
+.forTesting {
+    .el-accordion {
+        font-size: 16px
+    }
+
+    .el-full-width-a {
+        font-size: 17px
+    }
+}

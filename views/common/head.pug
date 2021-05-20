@@ -1,0 +1,19 @@
+mixin head(title, cssLinks, jsLinks)
+    head
+        meta(charset='utf-8')
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="robots", content="index, follow")
+        if title
+            title #{title} - cognosco
+        else
+            title cognosco
+        link(rel="stylesheet", href="/css/global.css", type="text/css")
+        if cssLinks
+            for cssLink in cssLinks
+                link(rel="stylesheet", href="/css/" + cssLink + ".css", type="text/css")
+        script(src="https://kit.fontawesome.com/a55b510a15.js" crossorigin="anonymous")
+        script(src="/js/global.js")
+        script(src="/js/customHTMLElements.js")
+        if jsLinks
+            for jsLink in jsLinks
+                script(src="/js/" + jsLink + ".js")

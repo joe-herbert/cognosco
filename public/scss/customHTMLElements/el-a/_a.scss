@@ -1,0 +1,23 @@
+.el-a, a.el {
+    color: #306ca2;
+
+    @supports (-webkit-text-fill-color: transparent) {
+        text-decoration-color: lightblue;
+        background: linear-gradient(315deg, #009ffd 0%, #482eff 74%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        text-shadow: none;
+    }
+
+    &:hover {
+        color: #224f77;
+
+        @supports (-webkit-text-fill-color: transparent) {
+            text-decoration-color: #5fa7e2;
+            background-image: linear-gradient(315deg, #49c411 0%, #0de4da 74%);
+        }
+    }
+}

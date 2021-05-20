@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+    include common/head.pug
+    block includeHead
+        +head(title, ["topics"])
+    body.topic
+        include common/navbar.pug
+        +navbar("topics", user)
+        .main
+            h1 #{title}
+            block language
+            if (topic.content) 
+                .topicWrapper #{topic.content}
+            if (topic.children)
+                h2 Subtopics
+                #topicsWrapper
+                    include common/showTopics.pug
+                    +showTopics(topic.children, topicDir)
+            if (!topic.content && !topic.children)
+                .topicWrapper
+                    block defaultContent
+                        p Coming soon!
+        include common/footer.pug
+        +footer()
+        block jsLinks

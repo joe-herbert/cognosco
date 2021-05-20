@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+    include ../common/head.pug
+    +head(title, ["form"], ['formReferrer'])
+    body.topic
+        include ../common/navbar.pug
+        +navbar("signup", user)
+        .main
+            form(action='/signup', method='POST').limitWidth
+                h1.text-center Sign up
+                input(name='referrer', type='text', value='').hide#referrer
+                label Email:
+                input(placeholder='Your email', required=true, name='email', type='email', value=formData.email)
+                if (errors && errors.email)
+                    p.error #{errors.email}
+                label Password: 
+                input(placeholder='Your password', required=true, name='password', type='password', value='')
+                if (errors && errors.password)
+                    p.error #{errors.password}
+                button.el Sign up
+                p 
+                    a(href="/login").el Already have an account?
+        include ../common/footer.pug
+        +footer()

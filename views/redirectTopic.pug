@@ -1,0 +1,15 @@
+doctype html
+html(lang='en')
+    include common/head.pug
+    +head(title)
+    body.index
+        include common/navbar.pug
+        +navbar("home", user)
+        .main.text-center
+            h1 Uh oh...
+            p We couldn't find that topic in that location.
+            p Did you mean #[a(href=topic.directory + topic.titleUrl).el #{topicDir}]?
+            button(onclick="window.location = '" + topic.directory + topic.titleUrl + "'").el.inline-block YES, TAKE ME THERE
+            button(onclick="window.location = '/topics'").el.inline-block ALL TOPICS
+        include common/footer.pug
+        +footer()

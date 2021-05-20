@@ -1,0 +1,86 @@
+.bold {
+    font-weight: bold;
+}
+
+.italics {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+ul.hyphen {
+    list-style-type: none;
+
+    >li {
+        text-indent: -5px;
+
+        &:before {
+            content: "\2014 ";
+            text-indent: -5px;
+        }
+    }
+}
+
+ul.step {
+    list-style-type: none;
+    counter-reset: ul-step;
+
+    >li {
+        text-indent: -5px;
+        transition: all 0.25s;
+
+        &:hover {
+            text-indent: 0;
+            &:before {
+                opacity: 0.8;
+            }
+        }
+
+        &:before {
+            counter-increment: ul-step;
+            content: counter(ul-step) ". ";
+            text-indent: -5px;
+            color: black;
+            opacity: 0.4;
+            transition: all 0.25s;
+        }
+    }
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.hide {
+    display: none;
+}
+
+.transition {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s, visibility 0.5s;
+
+    &.transitionHide {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.text-center {
+    text-align: center;
+}

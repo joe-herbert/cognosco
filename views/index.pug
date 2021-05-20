@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+    include common/head.pug
+    +head(title, ["index"])
+    body.index
+        include common/navbar.pug
+        +navbar("home", user)
+        .main
+            h1 cognosco
+            #definition
+                span.phonetics [&nbsp;kɒɡ.nɒs.kəʊ&nbsp;] 
+                span.italic verb
+                br
+                span.bold Latin
+                ul.hyphen
+                    li I know, I learn, I recognise
+            #container
+                #about
+                    p#welcome Welcome to cognosco, the site where you learn. 
+                    p Loads of topics, constantly expanding and free forever.
+                    p We welcome and encourage #[a(href='/contribute').el community contributions] too!
+                button(onclick="window.location = './topics'").el#getLearningButton GET LEARNING
+        include common/footer.pug
+        +footer()

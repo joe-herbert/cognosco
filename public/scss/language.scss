@@ -1,0 +1,202 @@
+@use "globalVars"as *;
+
+body {
+    overflow: hidden;
+    margin: 0;
+    font-family: Tahoma, Helvetica, Arial, "SimSun", "宋体", STXihei, "华文细黑", sans-serif;
+}
+
+// .btn {
+//     padding: 20px;
+//     margin: 20px;
+//     text-decoration: none;
+//     color: black;
+//     display: inline-block;
+//     font-size: 20px;
+//     border: 3px solid $blue;
+//     position: absolute;
+//     opacity: 0.6;
+//     width: 150px;
+//     height: 47px;
+//     text-align: center;
+//     color: white;
+//     border-radius: 5px;
+//     line-height: 47px;
+//     transition: color 0.4s, border-color 0.4s, border-radius 0.4s, background-color 0.4s;
+
+//     &:before {
+//         content: '';
+//         width: 100%;
+//         background-color: aquamarine;
+//         height: 0px;
+//         display: inline-block;
+//         position: absolute;
+//         z-index: -10;
+//         left: 0px;
+//         top: 0px;
+//         transition: height 0.4s;
+//     }
+
+//     &:hover {
+//         color: black;
+//         border-color: black;
+//         border-radius: 0;
+
+//         &:before {
+//             height: 100%;
+//         }
+//     }
+// }
+
+.languageWrapper {
+    text-align: center;
+}
+
+#searchContainer {
+    width: 100%;
+    font-size: 24px;
+    text-align: left;
+    position: relative;
+}
+
+#search {
+    width: 100%;
+    font-size: 24px;
+    padding: 10px;
+    margin-bottom: 20px;
+    padding-left: 50px;
+    border: none;
+    background-color: inherit;
+    box-shadow: 0 0 10px -5px;
+}
+
+#searchIcon {
+    position: absolute;
+    left: 13px;
+    top: 13px;
+}
+
+#wordsList {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 5vw;
+}
+
+#wordsList td,
+#wordsList th {
+    width: 31%;
+    padding: 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#wordsList tr {
+    border: 1px solid black;
+}
+
+#chkTdHeader {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.chkTd {
+    width: 7% !important;
+    display: none;
+}
+
+#wordsList td:nth-of-type(2),
+#wordsList th:nth-of-type(2) {
+    text-align: right;
+}
+
+#wordsList td:last-of-type,
+#wordsList th:last-of-type {
+    text-align: left;
+    font-size: 24px;
+}
+
+#wordsList th {
+    background-color: $blue;
+    font-size: 18px;
+    color: white;
+    text-transform: capitalize;
+}
+
+span.speak {
+    cursor: pointer;
+    transition: color .4s;
+
+    &:hover {
+        color: $blue-dark;
+
+        &::after {
+            width: 100%;
+        }
+    }
+
+    &::after {
+        content: "";
+        width: 0;
+        height: 1px;
+        display: block;
+        position: relative;
+        background-color: $blue-dark;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width .4s;
+    }
+}
+
+// #q,
+// #mid,
+// #ans,
+// #go,
+// #next {
+//     margin: 10px 0;
+//     display: inline-block;
+// }
+
+// #q {
+//     font-size: 50px;
+//     padding: 20px;
+//     width: auto;
+//     border-radius: 20px;
+//     box-shadow: 0px 0px 10px 0px black;
+//     cursor: pointer;
+// }
+
+// #mid {
+//     font-size: 25px;
+// }
+
+// #ans,
+// #go,
+// #next {
+//     font-size: 20px;
+// }
+
+// #ans {
+//     box-shadow: 0px 0px 5px 0px $blue;
+//     color: white;
+//     border: none;
+//     border-radius: 35px;
+//     height: 15px;
+//     line-height: 15px;
+//     padding: 10px;
+// }
+
+// #go {
+//     background-color: $blue;
+//     color: white;
+//     border: none;
+//     padding: 7px 20px;
+//     border-radius: 10px;
+// }
+
+// #next {
+//     background-color: $blue;
+//     color: white;
+//     text-decoration: none;
+//     padding: 7px 20px;
+//     border-radius: 10px;
+// }

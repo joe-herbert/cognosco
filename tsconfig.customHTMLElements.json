@@ -4,11 +4,12 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": false,
-        "outDir": "public/js/",
+        "outFile": "public/js/customHTMLElements.js",
         "sourceMap": false,
         "target": "ES6"
     },
     "include": [
-        "public/ts/*.ts"
+        "public/ts/customHTMLElements/*.ts",
+        "public/ts/customHTMLElements/*/*.ts"
     ]
 }

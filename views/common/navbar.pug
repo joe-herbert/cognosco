@@ -1,0 +1,28 @@
+mixin navbar(active, user)
+    #navbar
+        img(src="/img/cogs.svg", alt="cognosco", onclick="window.location = './'")#logo
+        if (active == "home")
+            a(href="/").el-underline-animate.active Home
+        else
+            a(href="/").el-underline-animate Home
+        if (active == "topics")
+            a(href="/topics").el-underline-animate.active Topics
+        else
+            a(href="/topics").el-underline-animate Topics
+        if (active == "contribute")
+            a(href="/contribute").el-underline-animate.active#contributeNav Contribute
+        else
+            a(href="/contribute").el-underline-animate#contributeNav Contribute
+        .nav-right
+            if user
+                if user.profUrl
+                    img(src="/img/profs/"+user.id+".jpg", alt="Profile", onclick="window.location = '/account'").profile
+                else 
+                    img(src="/img/profs/default.svg", alt="Profile", onclick="window.location = '/account'").profile
+            else
+                if (active == "login")
+                    a(href="/login").el-underline-animate.active Log in
+                else if (active == "signup")
+                    a(href="/signup").el-underline-animate.active Sign up
+                else
+                    a(href="/login").el-underline-animate Log in

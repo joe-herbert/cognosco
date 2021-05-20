@@ -1,0 +1,74 @@
+extends topic.pug
+
+block includeHead
+    +head(title, ["topic", "topics", "language", "form"], ["language"])
+
+block language
+    if (words)
+        p Hint: Click a word to hear it out loud!
+        br
+    .languageWrapper
+        if (words)
+            button(onclick="testAll()").el.inline-block Test All
+            button(onclick="testSelection(this)").el.inline-block Select Words
+            br
+            br
+            #searchContainer
+                input(type='text', placeholder='Search', name='mandarinSearch', onkeyup='searchKeyUp(this.value)')#search
+                i.fas.fa-search#searchIcon
+            form#selectionForm
+                table#wordsList
+                    thead
+                        tr
+                            th#chkTdHeader.chkTd(onclick='selectAllChks()') Select All
+                            for param in languageKeys
+                                unless (param == "id" || param == "createdAt" || param.substring(0, 3) == "alt")
+                                    th= param
+                    tbody#wordsListBody
+        else
+            p This language has no words at the moment.
+        if (user && user.isAdmin)
+            h2.text-center Add new word
+            form(action='/newWord', method='POST').limitWidth
+                if modelName
+                    input(name="modelName", type="text", value=modelName).hide
+                if pathName
+                    input(name="pathName", type="text", value=pathName).hide
+                label English:
+                input(type="text", name="english", value=formData.english, required)
+                if (errors && errors.english)
+                    p.error #{errors.english}
+                label Alternative English:
+                input(type="text", name="altEnglish", value=formData.altEnglish)
+                if (errors && errors.altEnglish)
+                    p.error #{errors.altEnglish}
+                label Pinyin:
+                input(type="text", name="pinyin", value=formData.pinyin, required)
+                if (errors && errors.pinyin)
+                    p.error #{errors.pinyin}
+                label Mandarin:
+                input(type="text", name="mandarin", value=formData.mandarin, required)
+                if (errors && errors.mandarin)
+                    p.error #{errors.mandarin}
+                if (errors && errors.general)
+                    p.error #{errors.general}
+                button.el Add Word
+    #languageTester
+        span(onclick="responsiveVoice.speak(\'\');")#q
+        br
+        span#mid
+        br
+        form(action="#", onsubmit="checkAns(this);return false", autocomplete="off")
+            input(type="text", name="ans", placeholder="English", autocomplete="off")#ans
+            br
+            input(type="submit", value="Go")#go
+        a(href="javascript:void(0);", onclick="nextWord()", style="display: none;")#next Next
+        br
+        span#correction
+
+block defaultContent
+
+block jsLinks
+    script(src="https://code.responsivevoice.org/responsivevoice.js?key=kYmQxInd")
+    script(type='text/javascript').
+        let modelName = "#{modelName}", words = !{jsWords}, languageKeys = !{jsLanguageKeys};

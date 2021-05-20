@@ -1,0 +1,10 @@
+mixin showTopics(topics, currentDir)
+    if (topics)
+        for topic in topics
+            if topic.children
+                button.el-accordion #{topic.title}
+                div #{topic.description}
+                    .nestedTopicsWrapper
+                        +showTopics(topic.children, currentDir+topic.dir)
+            else
+                a(href="/learn/"+currentDir+topic.dir, draggable="false").el-full-width-a #{topic.title}

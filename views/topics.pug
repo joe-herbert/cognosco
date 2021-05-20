@@ -1,0 +1,51 @@
+mixin addTopicToSelect(topics)
+    if (topics)
+        for topic in topics
+            if topic.id == formData.parentId
+                option(value=topic.id, selected) #{topic.title}
+            else
+                option(value=topic.id) #{topic.title}
+            if topic.children
+                +addTopicToSelect(topic.children)
+
+doctype html
+html(lang='en')
+    include common/head.pug
+    +head(title, ["topics", "form"])
+    body.topics
+        include common/navbar.pug
+        +navbar("topics", user)
+        .main
+            h1 Topics
+            #topicsWrapper
+                include common/showTopics.pug
+                +showTopics(topics, "")
+            if (user && user.isAdmin)
+                h2.text-center Create a New Topic
+                form(action='/newTopic', method='POST').limitWidth
+                    label Title:
+                    input(type="text", name="title", value=formData.title, required)
+                    if (errors && errors.title)
+                        p.error #{errors.title}
+                    label Description:
+                    input(type="text", name="description", value=formData.description)
+                    if (errors && errors.description)
+                        p.error #{errors.description}
+                    label Content:
+                    textarea(name="content", value=formData.content)
+                    if (errors && errors.content)
+                        p.error #{errors.content}
+                    label Parent:
+                    select(name="parentId")
+                        if (formData && formData.parentId)
+                            option(value='') - No parent -
+                        else
+                            option(value='', default, selected) - No parent -
+                        +addTopicToSelect(topics)
+                    if (errors && errors.parentId)
+                        p.error #{errors.parentId}
+                    if (errors && errors.general)
+                        p.error #{errors.general}
+                    button.el Create Topic
+        include common/footer.pug
+        +footer()

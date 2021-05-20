@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+    include ../common/head.pug
+    +head(title, ["index"])
+    body.index
+        include ../common/navbar.pug
+        +navbar("", user)
+        .main
+            h1 My account
+            if (user && user.firstname && user.surname)
+                h3 Name:
+                p #{user.firstname} #{user.surname}
+            if (user && user.email)
+                h3 Email:
+                p= user.email
+            if (user && user.dob)
+                h3 DOB:
+                p= user.dob
+            if (user && user.isAdmin)
+                h3 Admin:
+                p= user.isAdmin
+        include ../common/footer.pug
+        +footer()

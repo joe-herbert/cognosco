@@ -1,0 +1,8 @@
+.el-list-item {
+    text-indent: -5px;
+
+    &:before {
+        content: "\2014 ";
+        text-indent: -5px;
+    }
+}
