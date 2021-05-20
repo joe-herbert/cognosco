@@ -1,7 +1,0 @@
-package-lock.json
-build/
-node_modules/
-.jsbeautifyrc
-config/
-robots.txt
-todo.txt
